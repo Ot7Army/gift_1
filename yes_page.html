@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Songs That Remind Me of You</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Coquette"
+    />
+    <style>
+      body {
+        font-family: "Coquette", cursive;
+        background-color: #fce8ea;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 0 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #ff6b6b;
+        font-size: 36px;
+        margin-bottom: 30px;
+      }
+      .songs {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 20px;
+      }
+      .song-item {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+      }
+      .song-item:hover {
+        background-color: #ff99ac;
+      }
+      .song-title {
+        font-size: 20px;
+        color: #ff6b6b;
+        margin-bottom: 10px;
+        transition: color 0.3s ease;
+      }
+      .song-title:hover {
+        color: #ff3366;
+      }
+      .proceed-button {
+        display: block;
+        margin: 30px auto;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff6b6b;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .proceed-button:hover {
+        background-color: #ff99ac;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Songs That Remind Me of You</h1>
+      <div class="songs" id="songs-container">
+        <!-- Song items will be dynamically inserted here -->
+      </div>
+      <button class="proceed-button" onclick="proceed()">Proceed</button>
+    </div>
+
+    <script>
+      // Array of song titles and their YouTube links
+      const songs = [
+        { title: "Lover", link: "https://www.youtube.com/watch?v=-BjZmE2gtdo" },
+        {
+          title: "Sweet Night",
+          link: "https://www.youtube.com/watch?v=_pC6o6H3CmY",
+        },
+        {
+          title: "My you",
+          link: "https://www.youtube.com/watch?v=_yTP_L8fC-k",
+        },
+        {
+          title: "Still with you",
+          link: "https://www.youtube.com/watch?v=BksBNbTIoPE",
+        },
+        { title: "D-day", link: "https://www.youtube.com/watch?v=PxnuqFD-f9c" },
+        {
+          title: "Rainy Days",
+          link: "https://www.youtube.com/watch?v=yTsINmrAK4I",
+        },
+        {
+          title: "Wherever U R",
+          link: "https://www.youtube.com/watch?v=LEdNCS8luWE",
+        },
+        { title: "HOME", link: "https://www.youtube.com/watch?v=Yb7tgdg4Wr4" },
+        {
+          title: "Like Crazy",
+          link: "https://www.youtube.com/watch?v=nOI67IDlNMQ",
+        },
+        { title: "Closer to you", link: "https://youtu.be/tToKGa3ulg0?t=643" },
+        {
+          title: "Just one day",
+          link: "https://www.youtube.com/watch?v=dzAwJW107nk",
+        },
+        {
+          title: "The astronaut",
+          link: "https://www.youtube.com/watch?v=c6ASQOwKkhk",
+        },
+        {
+          title: "I like me better",
+          link: "https://www.youtube.com/watch?v=BcqxLCWn-CE",
+        },
+        {
+          title: "I need you",
+          link: "https://www.youtube.com/watch?v=jjskoRh8GTE",
+        },
+        {
+          title: "Something about you",
+          link: "https://www.youtube.com/watch?v=0VAAS9xnS5U",
+        },
+        {
+          title: "Yes or no",
+          link: "https://www.youtube.com/watch?v=uOFIcm-L0po",
+        },
+        {
+          title: "Heavenly",
+          link: "https://www.youtube.com/watch?v=s1QCL9AGbO0",
+        },
+        {
+          title: "I wanna be yours",
+          link: "https://www.youtube.com/watch?v=nyuo9-OjNNg",
+        },
+        {
+          title: "Christmas Tree",
+          link: "https://www.youtube.com/watch?v=lj8TV9q59P4",
+        },
+        { title: "Co2", link: "https://www.youtube.com/watch?v=U2SVCCENLjE" },
+        {
+          title: "Make you mine",
+          link: "https://www.youtube.com/watch?v=nLnp0tpZ0ok",
+        },
+        {
+          title: "Enchanted",
+          link: "https://www.youtube.com/watch?v=igIfiqqVHtA",
+        },
+        {
+          title: "A thousand years",
+          link: "https://www.youtube.com/watch?v=rtOvBOTyX00",
+        },
+        {
+          title: "Closer than this",
+          link: "https://www.youtube.com/watch?v=zzKV_T9ybe8",
+        },
+        {
+          title: "Girl of my dreams",
+          link: "hhttps://www.youtube.com/watch?v=MvGdQ03mHrc",
+        },
+        {
+          title: "Yet to come",
+          link: "https://www.youtube.com/watch?v=kXpOEzNZ8hQ",
+        },
+        {
+          title: "Daylight",
+          link: "https://www.youtube.com/watch?v=u9raS7-NisU",
+        },
+        {
+          title: "Answer: Love Myself",
+          link: "https://www.youtube.com/watch?v=9mwRYgMmSGE",
+        },
+        { title: "SDL", link: "https://www.youtube.com/watch?v=LEEZ2FS6loA" },
+        {
+          title: "Until I found you",
+          link: "https://www.youtube.com/watch?v=GxldQ9eX2wo",
+        },
+        { title: "Euphoria", link: "https://youtu.be/kX0vO4vlJuU?t=175" },
+        {
+          title: "Emerald eyes",
+          link: "https://www.youtube.com/watch?v=5Z4gKL2XAfQ",
+        },
+        {
+          title: "Sparkle(English version)",
+          link: "https://www.youtube.com/watch?v=U52IJSyHa24",
+        },
+        {
+          title: "Serendipity",
+          link: "https://www.youtube.com/watch?v=iUSGpz8MvZw",
+        },
+        {
+          title: "Make it right",
+          link: "https://www.youtube.com/watch?v=eXBu09fwe3I",
+        },
+        {
+          title: "With you",
+          link: "https://www.youtube.com/watch?v=pn0Pv4Ymbjs",
+        },
+        {
+          title: "Cold/mess",
+          link: "https://www.youtube.com/watch?v=Il7Nv270zNk",
+        },
+        {
+          title: "Miss right",
+          link: "https://www.youtube.com/watch?v=lvCB1SmzLW8",
+        },
+        {
+          title: "Nothing",
+          link: "https://www.youtube.com/watch?v=ucRVDoFkcxc",
+        },
+        {
+          title: "Favourite girl",
+          link: "https://www.youtube.com/watch?v=2u2Z07ujyD8",
+        },
+        {
+          title: "Too much",
+          link: "https://www.youtube.com/watch?v=83Lv790h79k",
+        },
+        {
+          title: "Deeper than it seems",
+          link: "https://www.youtube.com/watch?v=knya_7x83RM",
+        },
+        {
+          title: "Favorite",
+          link: "https://www.youtube.com/watch?v=nvhDZKiKdC8",
+        },
+        {
+          title: "Marting and Gina",
+          link: "https://www.youtube.com/watch?v=YNyFAro1E5M",
+        },
+        {
+          title: "Sparks",
+          link: "https://www.youtube.com/watch?v=xK9XHVWwzI0",
+        },
+        {
+          title: "Cigarettes",
+          link: "https://www.youtube.com/watch?v=Sis_JJZoAfQ",
+        },
+        {
+          title: "Here with me",
+          link: "https://www.youtube.com/watch?v=Ip6cw8gfHHI",
+        },
+        // Add more song objects as needed
+      ];
+
+      // Function to generate song items
+      function generateSongItems() {
+        const songsContainer = document.getElementById("songs-container");
+
+        // Loop through the songs array and create song items
+        songs.forEach((song) => {
+          const songItem = document.createElement("div");
+          songItem.classList.add("song-item");
+
+          const songTitle = document.createElement("div");
+          songTitle.classList.add("song-title");
+          songTitle.textContent = song.title;
+          songTitle.onclick = () => {
+            // Redirect to YouTube link when clicked
+            window.open(song.link, "_blank");
+          };
+
+          songItem.appendChild(songTitle);
+          songsContainer.appendChild(songItem);
+        });
+      }
+
+      // Call the function to generate song items
+      generateSongItems();
+
+      // Function to proceed to the next page
+      function proceed() {
+        // Redirect to word_search_page.html
+        window.location.href = "word_search_puzzle.html";
+      }
+    </script>
+  </body>
+</html>

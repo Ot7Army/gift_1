@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Wordfind game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Add required markup -->
+    <div id="puzzle-container"></div>
+    <div id="puzzle-words"></div>
+    <input type="button" id="solveBTN" value="Solve puzzle" />
+
+    <!-- Add dependencies -->
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"
+    ></script>
+    <script src="wordfind.js"></script>
+    <script src="wordfindgame.js"></script>
+    <!-- Add our logic -->
+    <script>
+      $(document).ready(function () {
+        // An array with the words to show
+        var words = [
+          "lover",
+          "sweetnight",
+          "myyou",
+          "stillwithyou",
+          "dday",
+          "rainydays",
+          "whereverur",
+          "home",
+          "likecrazy",
+          "closertoyou",
+          "justoneday",
+          "theastronaut",
+          "ilikemebetter",
+          "ineedyou",
+          "somethingaboutyou",
+          "iloveyou",
+        ];
+
+        // Start a basic word game without customization !
+        var gamePuzzle = wordfindgame.create(
+          words,
+          "#puzzle-container",
+          "#puzzle-words"
+        );
+
+        $("#solveBTN").click(function () {
+          // Change the background color of all puzzle squares to green
+          var result = wordfindgame.solve(gamePuzzle, words);
+
+          // Redirect to the last page after 10 seconds
+          setTimeout(function () {
+            window.location.href = "lastPage.html";
+          }, 10000);
+        });
+      });
+    </script>
+  </body>
+</html>

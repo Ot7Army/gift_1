@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Special Text</title>
+    <style>
+      /* Styling for the special text */
+      #special-text {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40px;
+        text-align: center;
+        animation: fadeIn 2s ease, moveUpDown 5s infinite alternate;
+        color: #ff69b4; /* Hot pink text color */
+        font-family: "Arial", sans-serif;
+        background-color: #fff; /* White background color */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+      }
+
+      /* Additional keyframes for up-down motion */
+      @keyframes moveUpDown {
+        0% {
+          transform: translate(-50%, -50%);
+        }
+        100% {
+          transform: translate(-50%, -45%);
+        }
+      }
+
+      /* Keyframes for fadeIn animation */
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* Ribbon decoration */
+      .ribbon::before {
+        content: "🎀";
+        color: #ff69b4; /* Hot pink ribbon color */
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Special text with decorations -->
+    <div id="special-text" class="ribbon">
+      I love you so much kits!<br />
+      and I can't stop thinking about you!!<br />
+      Thank you for entering in my life<br />
+      and no matter what you say or anyone says<br />
+      you will forever be the beauty queen I know.<br />
+      Even if I had to live my life in silence,<br />
+      I would spend that silence with you.<br />
+      And my favorite line - "Don't go anywhere,<br />
+      where I can't follow".
+    </div>
+  </body>
+</html>

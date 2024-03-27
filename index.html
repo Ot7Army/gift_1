@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #fce8ea;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        margin-top: 20%;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff6b6b;
+        color: #fff;
+      }
+      button:hover {
+        background-color: #ff99ac;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="question">Hi my queen, Do you wish to enter??</h1>
+      <div id="options">
+        <button onclick="yesClick()" id="yesButton">
+          Yes, I wanna proceed
+        </button>
+        <button onclick="noClick()">
+          No, I do not want to proceed (<span id="counter">10</span>)
+        </button>
+        <button onclick="lastClick()" id="crybabyButton" style="display: none">
+          Okay fine, you crybaby
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let counter = 10;
+      let reallyCounter = 0;
+      let images = [
+        "images/test1.gif",
+        "images/test2.gif",
+        "images/test3.gif",
+        "images/test4.gif",
+        "images/test5.gif",
+        "images/test7.gif",
+        "images/test6.gif",
+      ];
+
+      function noClick() {
+        document.getElementById("question").style.display = "none";
+        if (counter > 0 && reallyCounter < 3) {
+          counter--;
+          reallyCounter = Math.min(3, reallyCounter + 1);
+          document.getElementById("counter").innerText = counter;
+          let reallyText =
+            reallyCounter > 0 ? "really ".repeat(reallyCounter) : "";
+          document.getElementById(
+            "options"
+          ).innerHTML = `<h2>Do you ${reallyText}not want to proceed?</h2>
+                    <button onclick="yesClick()" id="yesButton">Yes, I'm sure</button>
+                    <button onclick="noClick()">No, I'm not sure (<span id="counter">${counter}</span>)</button>`;
+        } else if (counter > 0 && reallyCounter === 3) {
+          document.getElementById(
+            "options"
+          ).innerHTML = `<img src="${images[0]}" id="gifImage"><br>
+                    
+                    <button onclick="yesClick()" id="yesButton">Yes, I wanna proceed</button>
+                    <button onclick="noClick()">No, I do not want to proceed (<span id="counter">${counter}</span>)</button>`;
+          images.shift(); // Remove the first image from the array
+          counter--;
+        } else if (counter === 0) {
+          document.getElementById(
+            "options"
+          ).innerHTML = `<p>SIKE!!! You have no choice except to see it</p>
+                    <img src="./images/test.gif"><br>
+                    <button onclick="location.href='yes_page.html'">Okay fine, show me you crybaby</button>`;
+        }
+      }
+
+      function lastClick() {
+        document.getElementById(
+          "options"
+        ).innerHTML = `<button onclick="location.href='yes_page.html'">Okay fine, show me</button>`;
+      }
+
+      function yesClick() {
+        window.location.href = "yes_page.html";
+      }
+    </script>
+  </body>
+</html>

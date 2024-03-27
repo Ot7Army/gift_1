@@ -1,0 +1,130 @@
+#puzzle-container {
+  border: 2px solid #ff6b6b;
+  border-collapse: collapse;
+  padding: 20px;
+  float: left;
+  margin: 30px 20px;
+}
+
+#puzzle-container div {
+  width: 100%;
+  margin: 0 auto;
+}
+/* style for each square in the puzzle */
+
+#puzzle-container .puzzleSquare {
+  height: 30px;
+  width: 30px;
+  text-transform: uppercase;
+  background-color: white;
+  border: #ff6b6b;
+  font: 1em sans-serif;
+}
+
+#puzzle-container button::-moz-focus-inner {
+  border: 0;
+}
+/* indicates when a square has been selected */
+
+#puzzle-container .selected {
+  background-color: pink;
+}
+/* indicates that the square is part of a word that has been found */
+
+#puzzle-container .found {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+#puzzle-container .solved {
+  background-color: rgb(241, 112, 112);
+  color: white;
+}
+/* indicates that all words have been found */
+
+#puzzle-container .complete {
+  background-color: green;
+}
+/**
+* Styles for the word list
+*/
+
+#puzzle-words {
+  padding-top: 20px;
+  -moz-column-count: 2;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 20px;
+  column-count: 2;
+  column-gap: 20px;
+  width: 300px;
+}
+
+#puzzle-words ul {
+  list-style-type: none;
+}
+
+#puzzle-words li {
+  padding: 3px 0;
+  font: 1em sans-serif;
+  color: #ff6b6b;
+}
+/* indicates that the word has been found */
+
+#puzzle-words .wordFound {
+  text-decoration: line-through;
+  color: gray;
+}
+/**
+* Styles for the button
+*/
+body {
+  font-family: "Coquette", cursive;
+  background-color: #fce8ea;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #ff6b6b;
+  font-size: 36px;
+  margin-top: 20px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.song-list {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #ff6b6b;
+}
+#solve {
+  margin: 0 30px;
+}
+#solveBTN {
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: white;
+  background-color: #ff6b6b;
+  border: none;
+  cursor: pointer;
+  outline: none; /* Remove default focus outline */
+}
+#solveBTN:hover {
+  background-color: #ff4d4d; /* Darken color on hover */
+}
+
+#message.show {
+    opacity: 1;
+    transition: opacity 1s;
+  }
+  
+  .hidden {
+    display: none;
+  }
